@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: job-runner-deployment
+  labels:
+    project: elmo
+    app: job-runner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: elmo
+      app: job-runner
+  template:
+    metadata:
+      labels:
+        app: job-runner
+        project: elmo
+    spec:
+      containers:
+      - name: job-runner
+        image: docker.io/maayanmord/job-runner:lts
+        ports:
+        - containerPort: 8080
