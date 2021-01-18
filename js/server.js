@@ -18,35 +18,28 @@ let org;
 if ("TOWER_HOST" in process.env) {
     tower_host = process.env.TOWER_HOST;
 } else {
-    tower_host = "51.145.179.67";
+    console.log("ERROR: TOWER_HOST env var is not defined...");
 }
 if ("TOWER_PORT" in process.env) {
     tower_port = process.env.TOWER_PORT;
 } else {
-    tower_port = 8052;
+    console.log("ERROR: TOWER_PORT env var is not defined...");
 }
 if ("TOWER_USER" in process.env) {
     tower_user = process.env.TOWER_USER;
 } else {
-    tower_user = "admin"; 
+    console.log("ERROR: TOWER_USER env var is not defined...")
 }
 if ("TOWER_PASSWORD" in process.env) {
     tower_password = process.env.TOWER_PASSWORD;
 } else {
-    tower_password = "password";
+    console.log("ERROR: TOWER_PASSWORD env var is not defined...")
 }
 if ("ORGANIZATION" in process.env) {
     org = process.env.ORGANIZATION
 } else {
-    org = "dbaorg"
+    console.log("ERROR: ORGINIZATION env var is not defined...")
 }
-
-console.log(tower_host);
-console.log(tower_port);
-console.log(tower_user);
-console.log(tower_password);
-console.log(org);
-
 
 // Starting http server
 let server = http.createServer(function (req, res) {   

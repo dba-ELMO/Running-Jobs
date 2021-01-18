@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: job-runner-deployment
+  name: job-runner
   labels:
     project: elmo
     app: job-runner
@@ -19,6 +19,32 @@ spec:
     spec:
       containers:
       - name: job-runner
-        image: docker.io/maayanmord/job-runner:lts
+        image: docker.io/maayanmord/job-runner:1.0
         ports:
         - containerPort: 8080
+        env:
+        - name: TOWER_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: tower-cred
+              key: username
+        - name: TOWER_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: tower-cred
+              key: password
+        - name: TOWER_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: job-runner-configmap
+              key: tower_host 
+        - name: TOWER_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: job-runner-configmap
+              key: tower_port
+        - name: ORGANIZATION
+          valueFrom:
+            configMapKeyRef:
+              name: job-runner-configmap
+              key: organization

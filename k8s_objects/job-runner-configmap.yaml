@@ -1,0 +1,8 @@
+kind: ConfigMap 
+apiVersion: v1 
+metadata:
+  name: job-runner-configmap 
+data:
+  tower_host: "51.145.179.67"
+  tower_port: "8052"
+  organization: "dbaorg"
