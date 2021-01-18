@@ -4,13 +4,52 @@ const http = require('http');
 const url = require('url');
 const handle_requests = require('./handle_requests')
 
-let tower_host = "51.145.179.67"
-let tower_port = 8052
-let org = "dbaorg"
-let tower_user = "admin"
-let tower_password = "password"
+//
+// environment variables handeling
+//
+let tower_host;
+let tower_port;
+let tower_user;
+let tower_password;
+let org;
 
-let server = http.createServer(function (req, res) {   //create web server
+// Handeling environment variables 
+// on prod remove the else
+if ("TOWER_HOST" in process.env) {
+    tower_host = process.env.TOWER_HOST;
+} else {
+    tower_host = "51.145.179.67";
+}
+if ("TOWER_PORT" in process.env) {
+    tower_port = process.env.TOWER_PORT;
+} else {
+    tower_port = 8052;
+}
+if ("TOWER_USER" in process.env) {
+    tower_user = process.env.TOWER_USER;
+} else {
+    tower_user = "admin"; 
+}
+if ("TOWER_PASSWORD" in process.env) {
+    tower_password = process.env.TOWER_PASSWORD;
+} else {
+    tower_password = "password";
+}
+if ("ORGANIZATION" in process.env) {
+    org = process.env.ORGANIZATION
+} else {
+    org = "dbaorg"
+}
+
+console.log(tower_host);
+console.log(tower_port);
+console.log(tower_user);
+console.log(tower_password);
+console.log(org);
+
+
+// Starting http server
+let server = http.createServer(function (req, res) {   
     if (req.url == '/') { //check the URL of the current request
         
         // TODO: SIMPLE PAGE EXPLAINING DBA AUTOMATION
