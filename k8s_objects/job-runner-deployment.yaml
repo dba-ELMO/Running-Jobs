@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: job-runner
-        image: docker.io/maayanmord/job-runner:1.0
+        image: docker.io/maayanmord/job-runner:test
         ports:
         - containerPort: 8080
         env:
