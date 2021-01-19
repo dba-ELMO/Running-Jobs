@@ -1,8 +1,12 @@
-
+// existing modules
 const querystring = require('querystring');
 const http = require('http');
 const url = require('url');
-const handle_requests = require('./handle_requests')
+// npm install pg
+const { Pool, Client } = require('pg');
+
+// our models
+const handle_requests = require('./handle_requests');
 
 //
 // environment variables handeling

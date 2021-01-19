@@ -6,3 +6,5 @@ data:
   tower_host: "51.145.179.67"
   tower_port: "8052"
   organization: "dbaorg"
+  pghost: jobrunner-pg-postgresql.dba-jobrunner.svc.cluster.local
+  pgport: 5432

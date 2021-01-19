@@ -7,6 +7,8 @@ Running tower/awx jobs on clusters/hosts.
 Create configmap and secrets:
 ```
 kubectl create secret generic tower-cred --from-literal=username=admin --from-literal=password=password
+
+kubectl create secret generic pg-cred --from-literal=username=postgres --from-literal=password=secretpassword
 ```
 
 Create deployment and service:

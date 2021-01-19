@@ -48,3 +48,23 @@ spec:
             configMapKeyRef:
               name: job-runner-configmap
               key: organization
+        - name: PGUSER
+          valueFrom:
+            secretKeyRef:
+              name: pg-cred
+              key: username
+        - name: PGPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pg-cred
+              key: password
+        - name: PGHOST
+          valueFrom:
+            configMapKeyRef:
+              name: job-runner-configmap
+              key: pghost
+        - name: PGPORT
+          valueFrom:
+            configMapKeyRef:
+              name: job-runner-configmap
+              key: pgport
